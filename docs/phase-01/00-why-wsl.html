@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why WSL? — Zero to Hero</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #050510; --text: #e0e0e0; --accent: #00ff41; --muted: #a0a0a0;
+  --card: rgba(255,255,255,0.05); --border: rgba(255,255,255,0.1);
+}
+body {
+  font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text);
+  line-height: 1.7; padding: 40px 24px; min-height: 100vh;
+}
+.container { max-width: 900px; margin: 0 auto; }
+.header { text-align: center; padding: 30px 0 40px; }
+.badge {
+  display: inline-block; padding: 6px 16px; background: rgba(0,255,65,0.1);
+  border: 1px solid rgba(0,255,65,0.3); border-radius: 20px;
+  font-size: 0.8rem; font-weight: 600; color: var(--accent);
+  margin-bottom: 16px; font-family: 'JetBrains Mono', monospace;
+}
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--accent), #00d4ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.subtitle { color: var(--muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+
+.section {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px; margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+}
+.section-title {
+  font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; color: var(--text);
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title .icon { font-size: 1.4rem; }
+
+.why-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-top: 16px;
+}
+.why-card {
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; transition: transform 0.2s;
+}
+.why-card:hover { transform: translateY(-3px); border-color: rgba(0,255,65,0.3); }
+.why-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--accent); }
+.why-card p { font-size: 0.9rem; color: var(--muted); }
+
+.alt-list { list-style: none; margin-top: 12px; }
+.alt-list li {
+  padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.95rem; color: var(--text);
+}
+.alt-list li:last-child { border-bottom: none; }
+.alt-list .note { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+
+.goal-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(188,19,254,0.08));
+  border: 1px solid rgba(0,212,255,0.3); border-radius: 12px;
+  padding: 20px; margin-top: 16px; text-align: center;
+}
+.goal-text { font-size: 1.1rem; font-weight: 600; color: var(--text); }
+.goal-highlight { color: var(--accent); font-weight: 700; }
+
+.footer-note {
+  text-align: center; padding: 24px; color: var(--muted); font-size: 0.9rem;
+}
+.footer-note a { color: var(--accent); text-decoration: none; }
+.footer-note a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .why-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 1.8rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="badge">🐧 Phase 1 • Episode 1</div>
+    <h1>Why WSL? + Quick Setup to Ubuntu 24.04</h1>
+    <p class="subtitle">Your fastest path to a professional Linux development lab — without leaving Windows.</p>
+  </div>
+
+  <!-- Why WSL Section -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">❓</span> Why WSL2?</h2>
+    <p style="color: var(--muted); margin-bottom: 16px;">
+      We use <strong>WSL2 (Windows Subsystem for Linux)</strong> because it gives us:
+    </p>
+    <div class="why-grid">
+      <div class="why-card">
+        <h4>⚡ Native Performance</h4>
+        <p>Runs real Linux kernel with near-native speed — no emulation overhead.</p>
+      </div>
+      <div class="why-card">
+        <h4>🔗 Seamless Integration</h4>
+        <p>Access Windows files from Linux and vice versa. Use VS Code on Windows to edit Linux code.</p>
+      </div>
+      <div class="why-card">
+        <h4>💾 Lightweight</h4>
+        <p>Uses less RAM and disk than full VMs. Starts in seconds.</p>
+      </div>
+      <div class="why-card">
+        <h4>🛠️ Official Microsoft Support</h4>
+        <p>Built into Windows 10/11. Regular updates. Enterprise-ready.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alternatives Section -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">🔄</span> Other Options (If You Prefer)</h2>
+    <p style="color: var(--muted); margin-bottom: 8px;">
+      WSL2 is our default, but you can use:
+    </p>
+    <ul class="alt-list">
+      <li>
+        🖥️ <strong>VMware / VirtualBox</strong>
+        <div class="note">Full virtual machine. More control, but heavier on resources.</div>
+      </li>
+      <li>
+        ☁️ <strong>Cloud: AWS / Azure / GCP</strong>
+        <div class="note">Remote Linux servers. Great for deployment practice, but costs money.</div>
+      </li>
+      <li>
+        🍎 <strong>macOS with Docker / Multipass</strong>
+        <div class="note">Works well too — just adjust commands for your system.</div>
+      </li>
+    </ul>
+    <p style="color: var(--muted); margin-top: 16px; font-size: 0.9rem;">
+      💡 <em>Want to learn more about these? Search YouTube for "WSL2 vs VMware" or "Ubuntu on AWS for beginners".</em>
+    </p>
+  </div>
+
+  <!-- Goal Section -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">🎯</span> Our Goal Today</h2>
+    <div class="goal-box">
+      <p class="goal-text">
+        Get a clean <span class="goal-highlight">Ubuntu 24.04 LTS</span> system ready for development.<br>
+        That's it. No extra steps. No distractions.
+      </p>
+    </div>
+    <p style="color: var(--muted); margin-top: 16px; text-align: center;">
+      Next video: Install VS Code + Git + Docker inside Ubuntu.
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-note">
+    <p>
+      🔗 Resources: 
+      <a href="https://github.com/S-V-J/zero2hero" target="_blank">GitHub</a> • 
+      <a href="https://discord.gg/rE4gXC36" target="_blank">Discord</a> • 
+      <a href="https://www.youtube.com/@heroStackAcademy" target="_blank">YouTube</a>
+    </p>
+    <p style="margin-top: 8px;">
+      Created by <a href="https://www.linkedin.com/in/sid-093" target="_blank">Siddhant Kumar</a>
+    </p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero to Hero: Full Stack + VoIP + AI Engineer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- MathJax -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)'], ['$$', '$$'], ['\\[', '\\]']], 
+                displayMath: []
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0f0f0f;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-neon: #00ff41;
+            --accent-purple: #bc13fe;
+            --accent-cyan: #00d4ff;
+            --accent-gold: #ffc107;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --code-bg: #0a0a14;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+ width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 65, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(188, 19, 254, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(90deg, rgba(0, 255, 65, 0.15), rgba(188, 19, 254, 0.15));
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-neon);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, var(--accent-neon) 0%, var(--accent-cyan) 50%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            margin-bottom: 45px;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .creator-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .creator-info strong { color: var(--text-primary); font-weight: 600; }
+        .creator-divider {
+            width: 4px;
+            height: 4px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+        }
+
+        /* CTA Buttons Grid */
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
+            margin-top: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 28px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(188, 19, 254, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cta-button:hover {
+            border-color: var(--accent-neon);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 255, 65, 0.2);
+        }
+
+        .cta-button:hover::before { opacity: 1; }
+        .cta-icon { font-size: 1.3rem; position: relative; z-index: 1; }
+        .cta-text { position: relative; z-index: 1; }
+
+        /* Status Banner */
+        .status-banner {
+            margin-top: 55px;
+            padding: 22px 32px;
+            background: linear-gradient(90deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+            border-left: 4px solid #ffc107;
+            border-radius: 8px;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .status-banner strong { color: #ffc107; font-weight: 700; }
+        .status-banner p { color: var(--text-secondary); font-size: 0.95rem; margin-top: 6px; }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-header {
+            text-align: center;
+            padding: 40px 0 50px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(90deg, rgba(0, 255, 65, 0.15), rgba(188, 19, 254, 0.15));
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-neon);
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-neon) 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Target Audience Section */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 45px;
+        }
+
+        .audience-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 255, 65, 0.3);
+            box-shadow: 0 12px 35px rgba(0, 255, 65, 0.15);
+        }
+
+        .audience-icon { font-size: 3rem; margin-bottom: 16px; }
+        .audience-title { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+        .audience-desc { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Tech Stack Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .tech-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 255, 65, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 255, 65, 0.15);
+        }
+
+        .tech-card:hover::before { opacity: 1; }
+        .tech-icon { font-size: 2.5rem; margin-bottom: 18px; display: block; }
+        .tech-title { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
+        .tech-description { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .tech-tag {
+            padding: 4px 12px;
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            color: var(--accent-neon);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+        }
+
+        /* Timeline Container */
+        .timeline-container {
+            position: relative;
+            margin-top: 50px;
+            padding: 20px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 35px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent-neon), var(--accent-purple), var(--accent-cyan));
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 45px;
+            animation: slideInLeft 0.8s ease-out backwards;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 22px;
+            top: 5px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--bg-primary);
+            border: 3px solid var(--accent-neon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-neon);
+            font-family: 'JetBrains Mono', monospace;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-marker {
+            background: var(--accent-neon);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            transform: scale(1.15);
+        }
+
+        .timeline-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 28px 32px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-card {
+            border-color: rgba(0, 255, 65, 0.3);
+            transform: translateX(8px);
+            box-shadow: -8px 12px 30px rgba(0, 255, 65, 0.15);
+        }
+
+        .phase-label {
+            display: inline-block;
+            padding: 4px 14px;
+            background: linear-gradient(90deg, rgba(0, 255, 65, 0.15), rgba(188, 19, 254, 0.15));
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-neon);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .phase-title { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+        .phase-description { font-size: 0.98rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 28px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-purple), var(--accent-cyan));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 255, 65, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 255, 65, 0.15);
+        }
+
+        .project-card:hover::before { opacity: 1; }
+
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .project-number {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.2), rgba(188, 19, 254, 0.2));
+            border: 2px solid var(--accent-neon);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-neon);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .project-icon { font-size: 1.6rem; margin-bottom: 6px; display: block; }
+        .project-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; margin-bottom: 6px; }
+        .project-description { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.55; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+        .tech-badge {
+            padding: 3px 10px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            font-size: 0.72rem;
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+        }
+
+        /* Career Paths Section */
+        .career-paths {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 26px;
+            margin-top: 50px;
+        }
+
+        .career-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .career-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .career-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 255, 65, 0.35);
+            box-shadow: 0 16px 45px rgba(0, 255, 65, 0.18);
+        }
+
+        .career-card:hover::before { opacity: 1; }
+
+        .career-icon { font-size: 2.8rem; margin-bottom: 16px; display: block; }
+        .career-title { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 14px; }
+        .career-description { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px; }
+
+        .salary-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.12), rgba(188, 19, 254, 0.12));
+            border: 1px solid rgba(0, 255, 65, 0.25);
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--accent-neon);
+            font-family: 'JetBrains Mono', monospace;
+            margin-top: 12px;
+        }
+
+        /* Earning Goal Banner */
+        .goal-banner {
+            margin-top: 60px;
+            padding: 40px 48px;
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+            border: 2px solid rgba(255, 193, 7, 0.3);
+            border-radius: 20px;
+            text-align: center;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .goal-icon { font-size: 3.5rem; margin-bottom: 18px; display: block; }
+        .goal-title { font-size: 1.75rem; font-weight: 800; color: var(--accent-gold); margin-bottom: 14px; }
+        .goal-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .stat-box {
+            padding: 20px 32px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--accent-neon);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Market Grid */
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 26px;
+            margin-top: 50px;
+        }
+
+        .market-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .market-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 255, 65, 0.35);
+            box-shadow: 0 16px 45px rgba(0, 255, 65, 0.18);
+        }
+
+        .card-icon { font-size: 2.8rem; margin-bottom: 16px; display: block; }
+        .card-title { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 18px; }
+
+        .stat-item {
+            margin-bottom: 14px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--accent-neon);
+            border-radius: 6px;
+        }
+
+        .stat-label { font-size: 0.82rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; font-weight: 600; }
+        .stat-value { font-size: 1.05rem; color: var(--accent-neon); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+
+        .salary-range {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: linear-gradient(90deg, rgba(0, 255, 65, 0.08), rgba(0, 212, 255, 0.08));
+            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 65, 0.15);
+        }
+
+        .salary-label { font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 6px; font-weight: 600; }
+        .salary-value { font-size: 1.15rem; color: var(--accent-neon); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+
+        /* Freelancing Section */
+        .pathway-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 45px;
+            padding: 28px 36px;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.08), rgba(188, 19, 254, 0.08));
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+
+        .pathway-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .pathway-step:hover { transform: scale(1.05); background: rgba(0, 255, 65, 0.1); }
+        .pathway-arrow { font-size: 1.5rem; color: var(--accent-neon); }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 26px;
+            margin-top: 50px;
+        }
+
+        .timeline-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 255, 65, 0.35);
+            box-shadow: 0 16px 45px rgba(0, 255, 65, 0.18);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .time-badge {
+            padding: 6px 16px;
+            background: linear-gradient(90deg, rgba(0, 255, 65, 0.2), rgba(188, 19, 254, 0.2));
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent-neon);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .earning-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.15));
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 12px;
+            margin: 16px 0;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--accent-gold);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .opportunity-list { list-style: none; margin-top: 16px; }
+        .opportunity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .opportunity-icon { color: var(--accent-neon); font-size: 1rem; margin-top: 2px; flex-shrink: 0; }
+
+        /* Platform Grid */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 26px;
+            margin-top: 50px;
+        }
+
+        .platform-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 36px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 45px rgba(0, 255, 65, 0.18);
+        }
+
+        .platform-icon { font-size: 3rem; margin-bottom: 18px; display: block; }
+        .platform-title { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 14px; }
+        .platform-description { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 22px; flex-grow: 1; }
+
+        .feature-list { list-style: none; margin-bottom: 24px; }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .feature-bullet { color: var(--accent-neon); font-weight: 700; font-size: 1rem; }
+
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.15), rgba(188, 19, 254, 0.15));
+            border: 2px solid var(--accent-neon);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.25), rgba(188, 19, 254, 0.25));
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 255, 65, 0.25);
+        }
+
+        .sponsor-btn {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 107, 107, 0.15));
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .sponsor-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.25), rgba(255, 107, 107, 0.25));
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.25);
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+            margin-top: 50px;
+        }
+
+        .content-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            border-color: rgba(0, 255, 65, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 255, 65, 0.12);
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prereq-list { list-style: none; }
+        .prereq-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .prereq-icon { color: var(--accent-neon); font-weight: 700; font-size: 1.1rem; flex-shrink: 0; }
+
+        /* Code Block */
+        .code-block {
+            background: var(--code-bg);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 16px;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: 'Terminal';
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .code-content {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: var(--accent-neon);
+        }
+
+        .code-line { display: block; margin-bottom: 2px; }
+        .code-comment { color: #6a9955; }
+        .code-command { color: var(--accent-cyan); }
+
+        /* Episode Preview */
+        .episode-preview {
+            background: linear-gradient(135deg, rgba(188, 19, 254, 0.08), rgba(0, 212, 255, 0.08));
+            border: 1px solid rgba(188, 19, 254, 0.3);
+            padding: 26px;
+            border-radius: 14px;
+            margin-top: 18px;
+        }
+
+        .episode-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            background: linear-gradient(90deg, rgba(188, 19, 254, 0.2), rgba(0, 212, 255, 0.2));
+            border: 1px solid rgba(188, 19, 254, 0.4);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .episode-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
+        .episode-list { list-style: none; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+        .episode-item { padding: 4px 0; padding-left: 16px; position: relative; }
+        .episode-item::before { content: '→'; position: absolute; left: 0; color: var(--accent-purple); font-weight: 700; }
+
+        .update-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .update-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .update-item:hover {
+            background: rgba(0, 255, 65, 0.05);
+            border-color: rgba(0, 255, 65, 0.2);
+            transform: translateX(4px);
+        }
+
+        .update-icon { font-size: 1.2rem; }
+
+        /* CTA Section */
+        .cta-section {
+            margin-top: 55px;
+            padding: 38px 45px;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.08), rgba(188, 19, 254, 0.08));
+            border: 2px solid rgba(0, 255, 65, 0.3);
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .cta-emoji { font-size: 3rem; margin-bottom: 16px; display: block; }
+        .cta-text { font-size: 1.35rem; font-weight: 700; color: var(--accent-neon); margin-bottom: 12px; }
+        .cta-subtext { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6; }
+        .cta-highlight { color: var(--accent-cyan); font-weight: 600; }
+
+        /* Footer / Thank You */
+        .thankyou-section { text-align: center; padding: 50px 0 60px; }
+        .thankyou-emoji { font-size: 4rem; margin-bottom: 24px; display: inline-block; animation: pulse 3s ease-in-out infinite; }
+        .thankyou-subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 28px; line-height: 1.6; }
+
+        .author-card {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.06), rgba(188, 19, 254, 0.06));
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            margin-top: 40px;
+        }
+
+        .author-intro { font-size: 1.08rem; color: var(--text-primary); margin-bottom: 28px; line-height: 1.7; }
+        .author-name { color: var(--accent-neon); font-weight: 700; }
+        .contact-title { font-size: 1.25rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 22px; text-align: center; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 255, 65, 0.35);
+            box-shadow: 0 8px 25px rgba(0, 255, 65, 0.15);
+            background: rgba(0, 255, 65, 0.05);
+        }
+
+        .contact-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .contact-label { font-size: 0.78rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; font-weight: 600; }
+        .contact-value { font-size: 0.92rem; color: var(--accent-cyan); font-weight: 600; word-break: break-all; }
+
+        .tags-section { margin-top: 55px; }
+        .tags-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; text-align: center; }
+        .tags-cloud { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 800px; margin: 0 auto; }
+
+        .tag {
+            padding: 8px 18px;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.08), rgba(188, 19, 254, 0.08));
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            color: var(--accent-neon);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .tag:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.15), rgba(188, 19, 254, 0.15));
+            border-color: rgba(0, 255, 65, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 65, 0.2);
+        }
+
+        .footer {
+            margin-top: 70px;
+            padding-top: 35px;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .footer-text { font-size: 1rem; color: var(--text-primary); margin-bottom: 8px; font-weight: 600; }
+        .footer-brand { color: var(--accent-purple); font-weight: 700; }
+        .footer-subtext { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+        .heart { color: #ff6b6b; display: inline-block; animation: pulse 2s ease-in-out infinite; }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-purple));
+            margin: 40px auto;
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { padding: 40px 24px; }
+            h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 1.1rem; }
+            .cta-grid { grid-template-columns: 1fr; gap: 14px; }
+            .creator-info { font-size: 0.9rem; flex-direction: column; gap: 8px; }
+            .creator-divider { display: none; }
+            
+            h2 { font-size: 1.75rem; }
+            .tech-grid, .projects-grid, .market-grid, .career-paths, .platform-grid, .content-grid, .timeline-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .timeline-container { padding: 10px 0; }
+            .timeline-line { left: 20px; }
+            .timeline-item { padding-left: 58px; margin-bottom: 35px; }
+            .timeline-marker { left: 8px; width: 24px; height: 24px; font-size: 0.68rem; }
+
+            .pathway-banner { flex-direction: column; gap: 12px; padding: 22px 24px; }
+            .pathway-arrow { transform: rotate(90deg); }
+
+            .goal-banner { padding: 28px 24px; }
+            .goal-stats { gap: 20px; }
+            .stat-value { font-size: 1.8rem; }
+
+            .update-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; gap: 12px; }
+            .tags-cloud { gap: 8px; }
+            .tag { padding: 6px 14px; font-size: 0.78rem; }
+        }
+
+        ::selection {
+            background: rgba(0, 255, 65, 0.3);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ==================== HERO SECTION ==================== -->
+        <section class="hero">
+            <div class="hero-badge">🚀 Open Source Course 2025</div>
+            
+            <h1>Zero to Hero:<br>Full Stack + VoIP + AI Engineer</h1>
+            
+            <p class="subtitle">
+                Build 10 Production-Grade Applications<br>
+                Master Linux, Bash, C, C++, Python, AI/ML, Full Stack, Asterisk, Kamailio, and Cybersecurity
+            </p>
+
+            <div class="creator-info">
+                <strong>Created by Siddhant Kumar</strong>
+                <span class="creator-divider"></span>
+                <span>4+ Years Production Experience</span>
+                <span class="creator-divider"></span>
+                <span>stjl093@gmail.com</span>
+            </div>
+
+            <!-- Quick Links / CTAs -->
+            <div class="cta-grid">
+                <a href="https://github.com/S-V-J/zero2hero" target="_blank" class="cta-button">
+                    <span class="cta-icon">📦</span>
+                    <span class="cta-text">GitHub Repository</span>
+                </a>
+                
+                <a href="https://discord.gg/rE4gXC36" target="_blank" class="cta-button">
+                    <span class="cta-icon">💬</span>
+                    <span class="cta-text">Discord Community</span>
+                </a>
+                
+                <a href="https://github.com/sponsors/S-V-J" target="_blank" class="cta-button">
+                    <span class="cta-icon">❤️</span>
+                    <span class="cta-text">GitHub Sponsors</span>
+                </a>
+                
+                <a href="https://www.youtube.com/@heroStackAcademy" target="_blank" class="cta-button">
+                    <span class="cta-icon">🎥</span>
+                    <span class="cta-text">YouTube Channel</span>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/sid-093" target="_blank" class="cta-button">
+                    <span class="cta-icon">💼</span>
+                    <span class="cta-text">LinkedIn Profile</span>
+                </a>
+            </div>
+
+            <!-- Status Banner -->
+            <div class="status-banner">
+                <p><strong>⚠️ Course Status: In Progress</strong></p>
+                <p>This course is currently being built. No videos or detailed docs are live yet.<br>
+                Star this repo and join Discord to get notified when Episode 1 drops.</p>
+            </div>
+        </section>
+
+
+        <!-- ==================== TARGET AUDIENCE SECTION ==================== -->
+        <section class="section" id="target-audience">
+            <div class="section-header">
+                <div class="section-badge">🎯 Who Is This For?</div>
+                <h2>Built for Students & Freshers Ready to Become Developers</h2>
+                <p class="section-subtitle">
+                    Whether you're just starting out or looking to switch careers — this course transforms beginners into production-ready engineers.
+                </p>
+            </div>
+
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-icon">🎓</div>
+                    <h3 class="audience-title">Students</h3>
+                    <p class="audience-desc">
+                        College students who want real-world skills beyond textbooks. Build portfolio projects that impress recruiters.
+                    </p>
+                </div>
+
+                <div class="audience-card">
+                    <div class="audience-icon">🌱</div>
+                    <h3 class="audience-title">Fresh Graduates</h3>
+                    <p class="audience-desc">
+                        Recent graduates seeking their first developer role. Gain practical experience with enterprise-grade tools and workflows.
+                    </p>
+                </div>
+
+                <div class="audience-card">
+                    <div class="audience-icon">🔄</div>
+                    <h3 class="audience-title">Career Switchers</h3>
+                    <p class="audience-desc">
+                        Professionals from non-tech backgrounds wanting to break into software development. No prior coding experience required.
+                    </p>
+                </div>
+
+                <div class="audience-card">
+                    <div class="audience-icon">💡</div>
+                    <h3 class="audience-title">Self-Taught Learners</h3>
+                    <p class="audience-desc">
+                        Autodidacts who want structured guidance. Fill knowledge gaps and build professional-grade projects systematically.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== WHAT YOU'LL MASTER SECTION ==================== -->
+        <section class="section" id="what-youll-master">
+            <div class="section-header">
+                <div class="section-badge">💡 Comprehensive Curriculum</div>
+                <h2>What You'll Master</h2>
+                <p class="section-subtitle">
+                    This isn't theory. This is the exact stack used by Fortune 500s, telecom providers, and top freelance engineers.
+                </p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <span class="tech-icon">🐧</span>
+                    <h3 class="tech-title">WSL2 Ubuntu + VS Code</h3>
+                    <p class="tech-description">Professional development environment setup with Linux subsystem, integrated terminal, and enterprise-grade tooling.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">WSL2</span>
+                        <span class="tech-tag">Ubuntu</span>
+                        <span class="tech-tag">VS Code</span>
+                        <span class="tech-tag">Git</span>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <span class="tech-icon">💻</span>
+                    <h3 class="tech-title">Linux, Bash, C, C++, Python & Algorithms</h3>
+                    <p class="tech-description">Deep dive into systems programming, shell scripting, memory management, data structures, and algorithmic thinking.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Bash</span>
+                        <span class="tech-tag">C/C++</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <span class="tech-icon">🌐</span>
+                    <h3 class="tech-title">Full Stack Development</h3>
+                    <p class="tech-description">Build modern web applications with React frontend, FastAPI backend, PostgreSQL database, and Docker containerization.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <span class="tech-icon">🤖</span>
+                    <h3 class="tech-title">AI/ML Integration</h3>
+                    <p class="tech-description">Implement machine learning models, leverage large language models, and build intelligent systems with PyTorch and LangChain.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">ML</span>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <span class="tech-icon">☎️</span>
+                    <h3 class="tech-title">Enterprise VoIP</h3>
+                    <p class="tech-description">Master telecommunications with Asterisk PBX and Kamailio SIP server for building production-grade voice systems.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Asterisk</span>
+                        <span class="tech-tag">Kamailio</span>
+                        <span class="tech-tag">SIP</span>
+                        <span class="tech-tag">PBX</span>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <span class="tech-icon">🔒</span>
+                    <h3 class="tech-title">Full-Stack Cybersecurity</h3>
+                    <p class="tech-description">Harden every layer of your stack with OWASP best practices, JWT authentication, SRTP encryption, and penetration testing.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">OWASP</span>
+                        <span class="tech-tag">JWT</span>
+                        <span class="tech-tag">SRTP</span>
+                        <span class="tech-tag">Pentesting</span>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <span class="tech-icon">🚀</span>
+                    <h3 class="tech-title">10 Production-Ready Projects</h3>
+                    <p class="tech-description">Build real-world applications with CI/CD pipelines, monitoring dashboards, automated deployment, and enterprise-grade architecture.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">CI/CD</span>
+                        <span class="tech-tag">Monitoring</span>
+                        <span class="tech-tag">DevOps</span>
+                        <span class="tech-tag">Production</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== CAREER PATHS SECTION (NEW) ==================== -->
+        <section class="section" id="career-paths">
+            <div class="section-header">
+                <div class="section-badge">🚀 Your Career Journey</div>
+                <h2>Multiple Paths to Success</h2>
+                <p class="section-subtitle">
+                    Complete this course and unlock diverse career opportunities tailored to your goals.
+                </p>
+            </div>
+
+            <div class="career-paths">
+                <!-- Path 1: Job Interviews -->
+                <div class="career-card">
+                    <span class="career-icon">💼</span>
+                    <h3 class="career-title">Land Your Dream Job</h3>
+                    <p class="career-description">
+                        Ace technical interviews at top companies. Our projects mirror real interview challenges — system design, algorithms, full-stack implementation.
+                    </p>
+                    <div class="salary-highlight">
+                        💰 $70k – $200k/year
+                    </div>
+                </div>
+
+                <!-- Path 2: Freelancing -->
+                <div class="career-card">
+                    <span class="career-icon">🛠️</span>
+                    <h3 class="career-title">Freelance Developer</h3>
+                    <p class="career-description">
+                        Work on your own terms. Take on projects from global clients — automation scripts, VoIP systems, security audits, MVPs.
+                    </p>
+                    <div class="salary-highlight">
+                        💰 $50 – $250/hour
+                    </div>
+                </div>
+
+                <!-- Path 3: Start Company -->
+                <div class="career-card">
+                    <span class="career-icon">🏢</span>
+                    <h3 class="career-title">Start Your Own Company</h3>
+                    <p class="career-description">
+                        Launch a tech startup or agency. Lead projects as a founder or technical lead. Build products, hire teams, scale operations.
+                    </p>
+                    <div class="salary-highlight">
+                        🚀 Unlimited Potential
+                    </div>
+                </div>
+
+                <!-- Path 4: Project Leader -->
+                <div class="career-card">
+                    <span class="career-icon">👨‍💼</span>
+                    <h3 class="career-title">Project Leader / CTO</h3>
+                    <p class="career-description">
+                        Lead development teams, architect solutions, make strategic decisions. Guide projects from concept to deployment.
+                    </p>
+                    <div class="salary-highlight">
+                        👑 Leadership Role
+                    </div>
+                </div>
+            </div>
+
+            <!-- EARNING GOAL BANNER -->
+            <div class="goal-banner">
+                <span class="goal-icon">🎯</span>
+                <h3 class="goal-title">Our Goal: Financial Freedom for Developers</h3>
+                <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 20px;">
+                    We're building a company FOR developers — where you can earn <strong style="color: var(--accent-gold);">$1,500+/month</strong> working maximum <strong style="color: var(--accent-gold);">160 hours</strong>.
+                </p>
+                <div class="goal-stats">
+                    <div class="stat-box">
+                        <div class="stat-value">$1,500+</div>
+                        <div class="stat-label">Monthly Income Goal</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">160 hrs</div>
+                        <div class="stat-label">Max Work Hours/Month</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">~$9.37/hr</div>
+                        <div class="stat-label">Minimum Hourly Rate</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== COURSE ROADMAP SECTION ==================== -->
+        <section class="section" id="roadmap">
+            <div class="section-header">
+                <div class="section-badge">🗺️ Learning Journey</div>
+                <h2>Course Roadmap</h2>
+                <p class="section-subtitle">
+                    We start with fundamentals and progressively build enterprise-grade systems through a structured 6-phase curriculum.
+                </p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">01</div>
+                    <div class="timeline-card">
+                        <span class="phase-label">Phase 1</span>
+                        <h3 class="phase-title">Foundation (WSL2 + Git + VS Code)</h3>
+                        <p class="phase-description">
+                            Professional development environment setup with version control best practices, terminal mastery, and enterprise-grade tooling configuration.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">02</div>
+                    <div class="timeline-card">
+                        <span class="phase-label">Phase 2</span>
+                        <h3 class="phase-title">Systems Programming (Linux + C/C++)</h3>
+                        <p class="phase-description">
+                            Deep dive into operating systems concepts, memory management, file I/O, process control, and performance optimization at the system level.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">03</div>
+                    <div class="timeline-card">
+                        <span class="phase-label">Phase 3</span>
+                        <h3 class="phase-title">Python & Algorithms</h3>
+                        <p class="phase-description">
+                            Data structures, algorithmic thinking, scripting automation, system administration, and building robust Python applications.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">04</div>
+                    <div class="timeline-card">
+                        <span class="phase-label">Phase 4</span>
+                        <h3 class="phase-title">Full Stack Development</h3>
+                        <p class="phase-description">
+                            React frontend with modern hooks, FastAPI backend with async support, PostgreSQL database design, and Docker containerization.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">05</div>
+                    <div class="timeline-card">
+                        <span class="phase-label">Phase 5</span>
+                        <h3 class="phase-title">Enterprise VoIP (Asterisk + Kamailio)</h3>
+                        <p class="phase-description">
+                            SIP protocol deep-dive, PBX architecture, call routing logic, dialplan programming, and telephony integration with web applications.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">06</div>
+                    <div class="timeline-card">
+                        <span class="phase-label">Phase 6</span>
+                        <h3 class="phase-title">AI/ML + Security Hardening</h3>
+                        <p class="phase-description">
+                            Machine learning model deployment, LLM integration, OWASP security practices, penetration testing, and DevSecOps pipelines.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== 10 PROJECTS SECTION ==================== -->
+        <section class="section" id="projects">
+            <div class="section-header">
+                <div class="section-badge">🛠️ Real Production Systems</div>
+                <h2>10 Production-Grade Projects</h2>
+                <p class="section-subtitle">
+                    No toy apps — each project includes Asterisk + Kamailio, full-stack security, CI/CD, monitoring, and deployment.
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">01</div>
+                        <div class="project-title-wrapper">
+                            <span class="project-icon">☎️</span>
+                            <h3 class="project-title">Call Center System</h3>
+                        </div>
+                    </div>
+                    <p class="project-description">Multi-tenant PBX with IVR menus, call recording, real-time analytics dashboard, and agent management interface.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Asterisk</span>
+                        <span class="tech-badge">Kamailio</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">02</div>
+                        <div class="project-title-wrapper">
+                            <span class="project-icon">🤖</span>
+                            <h3 class="project-title">AI Customer Support Bot</h3>
+                        </div>
+                    </div>
+                    <p class="project-description">LLM-powered intelligent chatbot with VoIP integration for seamless voice and text customer service automation.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">LangChain</span>
+                        <span class="tech-badge">LLMs</span>
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">SIP</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">03</div>
+                        <div class="project-title-wrapper">
+                            <span class="project-icon">🏥</span>
+                            <h3 class="project-title">Telemedicine Platform</h3>
+                        </div>
+                    </div>
+                    <p class="project-description">HIPAA-compliant video consultation system with appointment scheduling, EHR integration, and secure communications.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">WebRTC</span>
+                        <span class="tech-badge">SRTP</span>
+                        <span class="tech-badge">JWT</span>
+                        <span class="tech-badge">Docker</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">04</div>
+                        <div class="project-title-wrapper">
+                            <span class="project-icon">📡</span>
+                            <h3 class="project-title">IoT Alert Gateway</h3>
+                        </div>
+                    </div>
+                    <p class="project-description">Real-time IoT monitoring system with automated phone alerts, SMS notifications, and incident escalation workflows.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">MQTT</span>
+                        <span class="tech-badge">Asterisk</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Redis</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">05</div>
+                        <div class="project-title-wrapper">
+                            <span class="project-icon">🔐</span>
+                            <h3 class="project-title">Secure API Gateway</h3>
+                        </div>
+                    </div>
+                    <p class="project-description">Enterprise-grade API gateway with rate limiting, JWT authentication, DDoS protection, and comprehensive logging.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">OWASP</span>
+                        <span class="tech-badge">Redis</span>
+                        <span class="tech-badge">Nginx</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">06</div>
+                        <div class="project-title-wrapper">
+                            <span class="project-icon">📞</span>
+                            <h3 class="project-title">VoIP Dialer Automation</h3>
+                        </div>
+                    </div>
+                    <p class="project-description">Bulk calling system with campaign management, call progress detection, answer machine detection, and analytics.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Asterisk</span>
+                        <span class="tech-badge">AMI</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Celery</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">07</div>
+                        <div class="project-title-wrapper">
+                            <span class="project-icon">📊</span>
+                            <h3 class="project-title">Full-Stack Dashboard</h3>
+                        </div>
+                    </div>
+                    <p class="project-description">React + FastAPI monitoring console with real-time data visualization, alerting system, and user management.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">WebSocket</span>
+                        <span class="tech-badge">Chart.js</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">08</div>
+                        <div class="project-title-wrapper">
+                            <span class="project-icon">🛡️</span>
+                            <h3 class="project-title">Security Audit Toolkit</h3>
+                        </div>
+                    </div>
+                    <p class="project-description">Automated vulnerability scanner with OWASP Top 10 checks, dependency analysis, and comprehensive reporting.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">SAST/DAST</span>
+                        <span class="tech-badge">OWASP</span>
+                        <span class="tech-badge">CI/CD</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">09</div>
+                        <div class="project-title-wrapper">
+                            <span class="project-icon">🎯</span>
+                            <h3 class="project-title">ML-Powered Call Analytics</h3>
+                        </div>
+                    </div>
+                    <p class="project-description">Speech-to-text sentiment analysis engine for call quality monitoring, keyword spotting, and trend identification.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">PyTorch</span>
+                        <span class="tech-badge">Whisper</span>
+                        <span class="tech-badge">NLP</span>
+                        <span class="tech-badge">FastAPI</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">10</div>
+                        <div class="project-title-wrapper">
+                            <span class="project-icon">⚙️</span>
+                            <h3 class="project-title">DevSecOps Pipeline</h3>
+                        </div>
+                    </div>
+                    <p class="project-description">Complete CI/CD pipeline with SAST/DAST scanning, container security, infrastructure as code, and deployment automation.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">GitHub Actions</span>
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">Terraform</span>
+                        <span class="tech-badge">Security</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== INDUSTRY DEMAND SECTION ==================== -->
+        <section class="section" id="industry-demand">
+            <div class="section-header">
+                <div class="section-badge">📈 Market Analysis</div>
+                <h2>Industry Demand & Salaries</h2>
+                <p class="section-subtitle">
+                    Companies want engineers who can build, secure, and deploy — not just code.
+                </p>
+            </div>
+
+            <div class="market-grid">
+                <div class="market-card">
+                    <span class="card-icon">🌐</span>
+                    <h3 class="card-title">Full Stack Developer</h3>
+                    
+                    <div class="stat-item">
+                        <div class="stat-label">Global Open Positions</div>
+                        <div class="stat-value">300,000+ Roles</div>
+                    </div>
+
+                    <div class="salary-range">
+                        <div class="salary-label">💰 Annual Salary Range</div>
+                        <div class="salary-value">$70k – $150k+</div>
+                    </div>
+                </div>
+
+                <div class="market-card">
+                    <span class="card-icon">🤖</span>
+                    <h3 class="card-title">AI/ML Engineer</h3>
+                    
+                    <div class="stat-item">
+                        <div class="stat-label">Year-over-Year Growth</div>
+                        <div class="stat-value">+40% YoY 📈</div>
+                    </div>
+
+                    <div class="salary-range">
+                        <div class="salary-label">💰 Annual Salary Range</div>
+                        <div class="salary-value">$120k – $200k+</div>
+                    </div>
+                </div>
+
+                <div class="market-card">
+                    <span class="card-icon">🔒</span>
+                    <h3 class="card-title">Linux/SRE & Security Engineer</h3>
+                    
+                    <div class="stat-item">
+                        <div class="stat-label">Global Talent Shortage</div>
+                        <div class="stat-value">3.5M Unfilled Positions ⚠️</div>
+                    </div>
+
+                    <div class="salary-range">
+                        <div class="salary-label">💰 Annual Salary Range</div>
+                        <div class="salary-value">$90k – $160k+</div>
+                    </div>
+                </div>
+
+                <div class="market-card">
+                    <span class="card-icon">☎️</span>
+                    <h3 class="card-title">VoIP Engineer</h3>
+                    
+                    <div class="stat-item">
+                        <div class="stat-label">Market Position</div>
+                        <div class="stat-value">Niche but Critical 💎</div>
+                    </div>
+
+                    <div class="salary-range">
+                        <div class="salary-label">💰 Annual Salary Range</div>
+                        <div class="salary-value">$85k – $150k+</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== FREELANCING SECTION ==================== -->
+        <section class="section" id="freelancing">
+            <div class="section-header">
+                <div class="section-badge">💰 Freelancing Goldmine</div>
+                <h2>Earn From Day 1</h2>
+                <p class="section-subtitle">
+                    This stack opens multiple revenue streams. You don't wait to get paid — start earning immediately.
+                </p>
+            </div>
+
+            <div class="pathway-banner">
+                <div class="pathway-step">🎯 Skill</div>
+                <span class="pathway-arrow">→</span>
+                <div class="pathway-step">⚡ Micro-Service</div>
+                <span class="pathway-arrow">→</span>
+                <div class="pathway-step">👥 Client</div>
+                <span class="pathway-arrow">→</span>
+                <div class="pathway-step">📈 Scale</div>
+            </div>
+
+            <div class="timeline-grid">
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="time-badge">⚡ Week 1–2</span>
+                        <span class="card-icon">🎯</span>
+                    </div>
+                    <h3 class="card-title">Quick Wins</h3>
+                    
+                    <div class="earning-highlight">💵 $100 – $300 per client</div>
+
+                    <ul class="opportunity-list">
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Offer Linux/Bash automation scripts for repetitive tasks</span>
+                        </li>
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Create shell scripts for system administration</span>
+                        </li>
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Set up development environments for teams</span>
+                        </li>
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Write Git workflow automation scripts</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="time-badge">📅 Month 1</span>
+                        <span class="card-icon">🔨</span>
+                    </div>
+                    <h3 class="card-title">Build & Deliver</h3>
+                    
+                    <div class="earning-highlight">💵 $500 – $2,000/month</div>
+
+                    <ul class="opportunity-list">
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Build secure web scrapers & API integrations</span>
+                        </li>
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Develop VoIP dialers & call automation systems</span>
+                        </li>
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Create data processing pipelines with Python</span>
+                        </li>
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Deploy and configure Asterisk PBX systems</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="card-header">
+                        <span class="time-badge">🚀 Month 2+</span>
+                        <span class="card-icon">📈</span>
+                    </div>
+                    <h3 class="card-title">Scale Up</h3>
+                    
+                    <div class="earning-highlight">💵 $5k – $50k+/project</div>
+
+                    <ul class="opportunity-list">
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Package projects into reusable products/SaaS</span>
+                        </li>
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Offer comprehensive security audits & penetration testing</span>
+                        </li>
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Build Full Stack MVPs for startups & businesses</span>
+                        </li>
+                        <li class="opportunity-item">
+                            <span class="opportunity-icon">✓</span>
+                            <span>Secure consulting retainers & long-term contracts</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== SUPPORT SECTION ==================== -->
+        <section class="section" id="support">
+            <div class="section-header">
+                <div class="section-badge">🤝 Join the Community</div>
+                <h2>How to Follow & Support</h2>
+                <p class="section-subtitle">
+                    All code, configs, and templates are open-source.
+                </p>
+            </div>
+
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <span class="platform-icon">📦</span>
+                    <h3 class="platform-title">GitHub Repository</h3>
+                    <p class="platform-description">Complete source code for all projects with detailed documentation and tutorials.</p>
+                    
+                    <ul class="feature-list">
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Complete source code</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Detailed documentation</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Issue tracking & feature requests</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Community contributions welcome</span></li>
+                    </ul>
+
+                    <a href="https://github.com/S-V-J/zero2hero" target="_blank" class="cta-btn">⭐ Star the Repo</a>
+                </div>
+
+                <div class="platform-card">
+                    <span class="platform-icon">💬</span>
+                    <h3 class="platform-title">Discord Community</h3>
+                    <p class="platform-description">Join our active community for peer reviews, networking, and live sessions.</p>
+                    
+                    <ul class="feature-list">
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Peer code reviews & feedback</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Job referrals & networking</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Live Q&A sessions</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Early access to new episodes</span></li>
+                    </ul>
+
+                    <a href="https://discord.gg/rE4gXC36" target="_blank" class="cta-btn">🚀 Join Discord</a>
+                </div>
+
+                <div class="platform-card">
+                    <span class="platform-icon">❤️</span>
+                    <h3 class="platform-title">Support This Course</h3>
+                    <p class="platform-description">Help fund server costs and enable more free educational content.</p>
+                    
+                    <ul class="feature-list">
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Funds server costs & infrastructure</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Enables more free content</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Keeps course 100% open-source</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Support independent education</span></li>
+                    </ul>
+
+                    <a href="https://github.com/sponsors/S-V-J" target="_blank" class="cta-btn sponsor-btn">💝 Become a Sponsor</a>
+                </div>
+
+                <div class="platform-card">
+                    <span class="platform-icon">🎥</span>
+                    <h3 class="platform-title">YouTube Channel</h3>
+                    <p class="platform-description">Video tutorials, walkthroughs, live coding sessions, and project demos.</p>
+                    
+                    <ul class="feature-list">
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Video tutorials & walkthroughs</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Live coding sessions</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Project demos & showcases</span></li>
+                        <li class="feature-item"><span class="feature-bullet">✓</span><span>Tips & industry insights</span></li>
+                    </ul>
+
+                    <a href="https://www.youtube.com/@heroStackAcademy" target="_blank" class="cta-btn">🔔 Subscribe Now</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== GETTING STARTED SECTION ==================== -->
+        <section class="section" id="getting-started">
+            <div class="section-header">
+                <div class="section-badge">🚀 Start Your Journey</div>
+                <h2>Getting Started</h2>
+                <p class="section-subtitle">
+                    Ready to begin your journey from zero to hero? Let's set up your professional development environment.
+                </p>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3 class="card-title">
+                        <span class="card-icon">✅</span>
+                        Prerequisites
+                    </h3>
+                    
+                    <ul class="prereq-list">
+                        <li class="prereq-item">
+                            <span class="prereq-icon">✓</span>
+                            <span><strong>Windows 10/11</strong> (for WSL2) or macOS/Linux operating system</span>
+                        </li>
+                        <li class="prereq-item">
+                            <span class="prereq-icon">✓</span>
+                            <span>Basic computer literacy and file management skills</span>
+                        </li>
+                        <li class="prereq-item">
+                            <span class="prereq-icon">✓</span>
+                            <span>Willingness to learn and build real projects</span>
+                        </li>
+                        <li class="prereq-item">
+                            <span class="prereq-icon">✓</span>
+                            <span>Enthusiasm for open-source development</span>
+                        </li>
+                        <li class="prereq-item">
+                            <span class="prereq-icon">✓</span>
+                            <span>~20GB free disk space for development tools</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3 class="card-title">
+                        <span class="card-icon">📋</span>
+                        Installation Checklist
+                    </h3>
+
+                    <div class="code-block">
+                        <pre class="code-content"><span class="code-line"><span class="code-comment"># 1. Install WSL2 (Windows)</span></span>
+<span class="code-line"><span class="code-command">wsl --install</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="code-comment"># 2. Fork & Clone the Repository</span></span>
+<span class="code-line"><span class="code-command">git clone git@github.com:</span><span style="color: #dcdcaa;">YOUR_USERNAME</span><span class="code-command">/zero2hero.git</span></span>
+<span class="code-line"><span class="code-command">cd zero2hero</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="code-comment"># 3. Open in VS Code</span></span>
+<span class="code-line"><span class="code-command">code .</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="code-comment"># 4. Verify Docker Installation</span></span>
+<span class="code-line"><span class="code-command">docker run hello-world</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="code-comment"># 5. Join Discord for Setup Help</span></span>
+<span class="code-line"><span class="code-comment"># https://discord.gg/rE4gXC36</span></span></pre>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3 class="card-title">
+                        <span class="card-icon">📺</span>
+                        Episode 1 Coming Soon
+                    </h3>
+
+                    <div class="episode-preview">
+                        <span class="episode-badge">⏳ Next Release</span>
+                        <h4 class="episode-title">WSL + Ubuntu + VS Code + Git Deep Dive</h4>
+                        
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px;">
+                            Complete setup guide with hands-on configuration:
+                        </p>
+
+                        <ul class="episode-list">
+                            <li class="episode-item">WSL2 configuration best practices</li>
+                            <li class="episode-item">VS Code extension recommendations</li>
+                            <li class="episode-item">SSH key setup for GitHub</li>
+                            <li class="episode-item">Git workflow fundamentals</li>
+                            <li class="episode-item">Troubleshooting common issues</li>
+                            <li class="episode-item">Professional terminal customization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3 class="card-title">
+                        <span class="card-icon">🔔</span>
+                        Stay Updated
+                    </h3>
+                    <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 12px;">
+                        Never miss an episode or community update:
+                    </p>
+
+                    <div class="update-grid">
+                        <div class="update-item">
+                            <span class="update-icon">⭐</span>
+                            <span>Star the GitHub repo</span>
+                        </div>
+                        <div class="update-item">
+                            <span class="update-icon">💬</span>
+                            <span>Join Discord notifications</span>
+                        </div>
+                        <div class="update-item">
+                            <span class="update-icon">🎥</span>
+                            <span>Subscribe on YouTube</span>
+                        </div>
+                        <div class="update-item">
+                            <span class="update-icon">📧</span>
+                            <span>Enable email alerts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <span class="cta-emoji">🚀</span>
+                <p class="cta-text">Drop a comment: "I'm in!" 👇</p>
+                <p class="cta-subtext">
+                    <span class="cta-highlight">Episode 1 drops next week.</span><br>
+                    Subscribe, enable notifications, and let's build your future — one commit at a time! 🎉
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ==================== FOOTER / THANK YOU SECTION ==================== -->
+        <section class="section" id="footer">
+            <div class="thankyou-section">
+                <div class="thankyou-emoji">🙏</div>
+                <h2>Thank You!</h2>
+                <p class="thankyou-subtitle">
+                    Thanks for your interest in <strong style="color: var(--accent-neon);">Zero to Hero: Full Stack + VoIP + AI Engineer</strong>.
+                </p>
+
+                <div class="author-card">
+                    <p class="author-intro">
+                        I'm <span class="author-name">Siddhant Kumar</span> — Full Stack + VoIP + AI Engineer with 4+ years building production systems.
+                        This course is my passion project to help developers like you master enterprise-grade skills through hands-on learning.
+                    </p>
+
+                    <h3 class="contact-title">📬 Connect With Me</h3>
+
+                    <div class="contact-grid">
+                        <a href="mailto:stjl093@gmail.com" class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <div class="contact-info">
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">stjl093@gmail.com</div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/sid-093" target="_blank" class="contact-item">
+                            <span class="contact-icon">💼</span>
+                            <div class="contact-info">
+                                <div class="contact-label">LinkedIn</div>
+                                <div class="contact-value">linkedin.com/in/sid-093</div>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/S-V-J" target="_blank" class="contact-item">
+                            <span class="contact-icon">📦</span>
+                            <div class="contact-info">
+                                <div class="contact-label">GitHub</div>
+                                <div class="contact-value">github.com/S-V-J</div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.youtube.com/@heroStackAcademy" target="_blank" class="contact-item">
+                            <span class="contact-icon">🎥</span>
+                            <div class="contact-info">
+                                <div class="contact-label">YouTube</div>
+                                <div class="contact-value">@heroStackAcademy</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Tags Section -->
+            <div class="tags-section">
+                <h3 class="tags-title">🏷️ Course Topics & Technologies</h3>
+                <div class="tags-cloud">
+                    <span class="tag">#FullStack</span>
+                    <span class="tag">#VoIP</span>
+                    <span class="tag">#Asterisk</span>
+                    <span class="tag">#Kamailio</span>
+                    <span class="tag">#Python</span>
+                    <span class="tag">#Cplusplus</span>
+                    <span class="tag">#AI</span>
+                    <span class="tag">#Cybersecurity</span>
+                    <span class="tag">#DevSecOps</span>
+                    <span class="tag">#OpenSource</span>
+                    <span class="tag">#Linux</span>
+                    <span class="tag">#Docker</span>
+                    <span class="tag">#React</span>
+                    <span class="tag">#FastAPI</span>
+                    <span class="tag">#MachineLearning</span>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p class="footer-text">
+                    © 2025 Siddhant Kumar | <span class="footer-brand">heroStackAcademy</span>
+                </p>
+                <p class="footer-subtext">
+                    Built with <span class="heart">❤️</span> for the open-source community<br>
+                    Empowering developers worldwide • One commit at a time 🚀
+                </p>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
