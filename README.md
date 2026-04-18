@@ -46,56 +46,71 @@ By the end of this course, you will have **10 production-ready applications** in
 > *Click a phase to jump to documentation. Video links will be added as episodes release.*  
 > 🟢 = Recorded | 🟡 = Scripting | ⚪ = Planned
 
+Perfect! SSH is working, docs are pushed, and everything is verified. ✅
+
+Here's the **updated Phase 1 section** for your `README.md` with live video links and correct documentation paths:
+
+---
+
+## 📚 Course Roadmap & Video Library
+
+> *Click a phase to jump to documentation. Video links updated as episodes release.*  
+> 🟢 = Live | 🟡 = Scripting | ⚪ = Planned
+
+### Phase 0: Course Introduction
+| Video | Topic | Docs | Video Link |
+|-------|-------|------|------------|
+| 0.0 | Course Intro + Vision + Roadmap | `docs/phase-00/00-introduction.md` | [🟢 Watch Now](https://youtu.be/6BJ3FPE5x3o) |
+
 ### Phase 1: Environment & Foundations
 | Video | Topic | Docs | Video Link |
 |-------|-------|------|------------|
-| 0.1 | Course Intro + Why This Stack | `docs/phase-01/00-intro.md` | *Coming Soon* |
-| 0.2 | WSL2 + Ubuntu 24.04 Setup | `docs/phase-01/01-wsl-setup.md` | *Coming Soon* |
-| 0.3 | VS Code + Extensions + Remote-WSL | `docs/phase-01/02-vscode-setup.md` | *Coming Soon* |
-| 0.4 | Git + SSH + Monorepo Workflow | `docs/phase-01/03-git-setup.md` | *Coming Soon* |
-| 0.5 | Docker + Docker Compose Basics | `docs/phase-01/04-docker-setup.md` | *Coming Soon* |
+| 1.1 | WSL2 + Ubuntu 24.04 + VS Code Setup | `docs/phase-01/01-wsl-vscode-setup.md` | [🟢 Watch Now](https://youtu.be/Ke6eLofGDp0) |
+| 1.2 | Git + SSH + GitHub Repository Setup | `docs/phase-01/02-git-github-setup.md` | [🟢 Watch Now](https://youtu.be/hBRxGIyZDnc) |
+| 1.3 | Development Tools: Docker + Python + Node.js + C/C++ | `docs/phase-01/03-dev-tools-setup.md` | [🟢 Watch Now](https://youtu.be/48xKbMgweq4) |
 
 ### Phase 2: Core Programming & Algorithms
 | Video | Topic | Docs | Video Link |
 |-------|-------|------|------------|
-| 2.1 | Linux CLI Deep Dive + Bash Automation | `docs/phase-02/01-linux-bash.md` | *Coming Soon* |
-| 2.2 | C Programming: Memory, Pointers, Makefiles | `docs/phase-02/02-c-core.md` | *Coming Soon* |
-| 2.3 | C++ Modern: OOP, STL, CMake | `docs/phase-02/03-cpp-modern.md` | *Coming Soon* |
-| 2.4 | Python for Automation + AI Prep | `docs/phase-02/04-python-basics.md` | *Coming Soon* |
-| 2.5 | Algorithms Across Languages (C/C++/Python) | `docs/phase-02/05-algorithms.md` | *Coming Soon* |
+| 2.1 | Linux CLI Deep Dive + Bash Automation | `docs/phase-02/01-linux-bash.md` | ⚪ Coming Soon |
+| 2.2 | C Programming: Memory, Pointers, Makefiles | `docs/phase-02/02-c-core.md` | ⚪ Coming Soon |
+| 2.3 | C++ Modern: OOP, STL, CMake | `docs/phase-02/03-cpp-modern.md` | ⚪ Coming Soon |
+| 2.4 | Python for Automation + AI Prep | `docs/phase-02/04-python-basics.md` | ⚪ Coming Soon |
+| 2.5 | Algorithms Across Languages (C/C++/Python) | `docs/phase-02/05-algorithms.md` | ⚪ Coming Soon |
 
 ### Phase 3: Full Stack Development
 | Video | Topic | Docs | Video Link |
 |-------|-------|------|------------|
-| 3.1 | Frontend: React/Next.js + TypeScript | `docs/phase-03/01-frontend.md` | *Coming Soon* |
-| 3.2 | Backend: FastAPI/Node.js + PostgreSQL | `docs/phase-03/02-backend.md` | *Coming Soon* |
-| 3.3 | APIs: REST, GraphQL, WebSockets | `docs/phase-03/03-apis.md` | *Coming Soon* |
-| 3.4 | DevOps: Docker, CI/CD, Nginx, Deploy | `docs/phase-03/04-devops.md` | *Coming Soon* |
+| 3.1 | Frontend: React/Next.js + TypeScript | `docs/phase-03/01-frontend.md` | ⚪ Coming Soon |
+| 3.2 | Backend: FastAPI/Node.js + PostgreSQL | `docs/phase-03/02-backend.md` | ⚪ Coming Soon |
+| 3.3 | APIs: REST, GraphQL, WebSockets | `docs/phase-03/03-apis.md` | ⚪ Coming Soon |
+| 3.4 | DevOps: Docker, CI/CD, Nginx, Deploy | `docs/phase-03/04-devops.md` | ⚪ Coming Soon |
 
 ### Phase 4: AI + ML Integration
 | Video | Topic | Docs | Video Link |
 |-------|-------|------|------------|
-| 4.1 | Python Data Stack: numpy, pandas, scikit-learn | `docs/phase-04/01-ml-basics.md` | *Coming Soon* |
-| 4.2 | Deep Learning: PyTorch/TensorFlow Intro | `docs/phase-04/02-deep-learning.md` | *Coming Soon* |
-| 4.3 | Deploying ML Models with FastAPI + Docker | `docs/phase-04/03-ml-deploy.md` | *Coming Soon* |
-| 4.4 | LLM Integration: LangChain, Ollama, RAG | `docs/phase-04/04-llm-integration.md` | *Coming Soon* |
+| 4.1 | Python Data Stack: numpy, pandas, scikit-learn | `docs/phase-04/01-ml-basics.md` | ⚪ Coming Soon |
+| 4.2 | Deep Learning: PyTorch/TensorFlow Intro | `docs/phase-04/02-deep-learning.md` | ⚪ Coming Soon |
+| 4.3 | Deploying ML Models with FastAPI + Docker | `docs/phase-04/03-ml-deploy.md` | ⚪ Coming Soon |
+| 4.4 | LLM Integration: LangChain, Ollama, RAG | `docs/phase-04/04-llm-integration.md` | ⚪ Coming Soon |
 
 ### Phase 5: VoIP Systems (Asterisk + Kamailio)
 | Video | Topic | Docs | Video Link |
 |-------|-------|------|------------|
-| 5.1 | SIP/RTP Fundamentals + Wireshark Lab | `docs/phase-05/01-sip-basics.md` | *Coming Soon* |
-| 5.2 | Kamailio: SIP Proxy, Routing, Load Balancing | `docs/phase-05/02-kamailio.md` | *Coming Soon* |
-| 5.3 | Asterisk: Dialplans, IVR, AGI/ARI | `docs/phase-05/03-asterisk.md` | *Coming Soon* |
-| 5.4 | WebRTC + SIP over WSS Integration | `docs/phase-05/04-webrtc.md` | *Coming Soon* |
+| 5.1 | SIP/RTP Fundamentals + Wireshark Lab | `docs/phase-05/01-sip-basics.md` | ⚪ Coming Soon |
+| 5.2 | Kamailio: SIP Proxy, Routing, Load Balancing | `docs/phase-05/02-kamailio.md` | ⚪ Coming Soon |
+| 5.3 | Asterisk: Dialplans, IVR, AGI/ARI | `docs/phase-05/03-asterisk.md` | ⚪ Coming Soon |
+| 5.4 | WebRTC + SIP over WSS Integration | `docs/phase-05/04-webrtc.md` | ⚪ Coming Soon |
 
 ### Phase 6: Full-Stack Cybersecurity
 | Video | Topic | Docs | Video Link |
 |-------|-------|------|------------|
-| 6.1 | OWASP Top 10 + Secure Headers + CSP | `docs/phase-06/01-web-security.md` | *Coming Soon* |
-| 6.2 | Auth: JWT, OAuth2, RBAC, MFA | `docs/phase-06/02-auth-security.md` | *Coming Soon* |
-| 6.3 | VoIP Security: SRTP, TLS, Anti-Fraud | `docs/phase-06/03-voip-security.md` | *Coming Soon* |
-| 6.4 | Security Testing: SAST/DAST, Pentest Basics | `docs/phase-06/04-security-testing.md` | *Coming Soon* |
+| 6.1 | OWASP Top 10 + Secure Headers + CSP | `docs/phase-06/01-web-security.md` | ⚪ Coming Soon |
+| 6.2 | Auth: JWT, OAuth2, RBAC, MFA | `docs/phase-06/02-auth-security.md` | ⚪ Coming Soon |
+| 6.3 | VoIP Security: SRTP, TLS, Anti-Fraud | `docs/phase-06/03-voip-security.md` | ⚪ Coming Soon |
+| 6.4 | Security Testing: SAST/DAST, Pentest Basics | `docs/phase-06/04-security-testing.md` | ⚪ Coming Soon |
 
+---
 > **All documentation files** (`.md`) will live in `docs/phase-XX/`.  
 > 🔗 **Video links** will be updated here as each episode publishes.
 
