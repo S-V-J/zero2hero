@@ -68,6 +68,8 @@ Here's the **updated Phase 1 section** for your `README.md` with live video link
 | 1.1 | WSL2 + Ubuntu 24.04 + VS Code Setup | `docs/phase-01/01-wsl-vscode-setup.md` | [🟢 Watch Now](https://youtu.be/Ke6eLofGDp0) |
 | 1.2 | Git + SSH + GitHub Repository Setup | `docs/phase-01/02-git-github-setup.md` | [🟢 Watch Now](https://youtu.be/hBRxGIyZDnc) |
 | 1.3 | Development Tools: Docker + Python + Node.js + C/C++ | `docs/phase-01/03-dev-tools-setup.md` | [🟢 Watch Now](https://youtu.be/48xKbMgweq4) |
+| 1.4 | VS Code Setup for WSL: Extensions + Remote Debugging | `docs/phase-01/04-vscode-setup.md` | [🟢 Watch Now](https://youtu.be/d5PWAjU27rg) |
+
 
 ### Phase 2: Core Programming & Algorithms
 | Video | Topic | Docs | Video Link |
