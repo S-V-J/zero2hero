@@ -15,9 +15,9 @@
 
 </div>
 
-> **Course Status: In Progress**  
+> **Course Status: In Progress**
 > This course is currently being built.
-> **Star this repo** and **join Discord** to get notified when Episode 1 drops.  
+> **Star this repo** and **join Discord** to get notified when Episode 1 drops.
 > Everything you see here is the *planned structure* — follow along as we build it together.
 
 ---
@@ -43,7 +43,7 @@ By the end of this course, you will have **10 production-ready applications** in
 
 ## Course Roadmap & Video Library
 
-> *Click a phase to jump to documentation. Video links will be added as episodes release.*  
+> *Click a phase to jump to documentation. Video links will be added as episodes release.*
 > 🟢 = Recorded | 🟡 = Scripting | ⚪ = Planned
 
 Perfect! SSH is working, docs are pushed, and everything is verified. ✅
@@ -54,7 +54,7 @@ Here's the **updated Phase 1 section** for your `README.md` with live video link
 
 ## 📚 Course Roadmap & Video Library
 
-> *Click a phase to jump to documentation. Video links updated as episodes release.*  
+> *Click a phase to jump to documentation. Video links updated as episodes release.*
 > 🟢 = Live | 🟡 = Scripting | ⚪ = Planned
 
 ### Phase 0: Course Introduction
@@ -69,6 +69,7 @@ Here's the **updated Phase 1 section** for your `README.md` with live video link
 | 1.2 | Git + SSH + GitHub Repository Setup | `docs/phase-01/02-git-github-setup.md` | [🟢 Watch Now](https://youtu.be/hBRxGIyZDnc) |
 | 1.3 | Development Tools: Docker + Python + Node.js + C/C++ | `docs/phase-01/03-dev-tools-setup.md` | [🟢 Watch Now](https://youtu.be/48xKbMgweq4) |
 | 1.4 | VS Code Setup for WSL: Extensions + Remote Debugging | `docs/phase-01/04-vscode-setup.md` | [🟢 Watch Now](https://youtu.be/d5PWAjU27rg) |
+| 1.5 | Git Like a Pro: Pre-commit Hooks + .gitignore | `docs/phase-01/05-precommit-gitignore.md` | [🟢 Watch Now](https://youtu.be/m_BMYqglbvQ) |
 
 
 ### Phase 2: Core Programming & Algorithms
@@ -113,7 +114,7 @@ Here's the **updated Phase 1 section** for your `README.md` with live video link
 | 6.4 | Security Testing: SAST/DAST, Pentest Basics | `docs/phase-06/04-security-testing.md` | ⚪ Coming Soon |
 
 ---
-> **All documentation files** (`.md`) will live in `docs/phase-XX/`.  
+> **All documentation files** (`.md`) will live in `docs/phase-XX/`.
 > 🔗 **Video links** will be updated here as each episode publishes.
 
 ---
