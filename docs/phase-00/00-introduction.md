@@ -194,7 +194,7 @@ Your support funds:
 
 ## ⚠️ Course Status: In Progress
 
-> This course is currently being built. New episodes drop weekly.  
+> This course is currently being built. New episodes drop weekly.
 > **Star the repo** and **join Discord** to get notified when the next episode releases.
 
 ---

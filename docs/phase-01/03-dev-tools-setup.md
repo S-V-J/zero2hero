@@ -72,10 +72,10 @@ Before starting Episode 3, ensure you have:
 sudo apt update && sudo apt upgrade -y
 ```
 
-**Why this matters**:  
-- Ensures you have the latest security patches  
-- Provides a clean, reproducible baseline for all learners  
-- Prevents dependency conflicts during later installations  
+**Why this matters**:
+- Ensures you have the latest security patches
+- Provides a clean, reproducible baseline for all learners
+- Prevents dependency conflicts during later installations
 
 > 💡 Pro Tip: Always run this before installing new tools — it's the #1 cause of "it works on my machine" failures.
 
@@ -137,7 +137,7 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt install -y nodejs
 ```
 
-**Why NodeSource?**  
+**Why NodeSource?**
 Ubuntu's default Node.js package is often outdated (v18 or older). NodeSource provides the **latest LTS (v20)** with security patches and modern features required for:
 - React/Next.js frontend development
 - FastAPI/Express backend APIs
@@ -173,7 +173,7 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-**Why Docker?**  
+**Why Docker?**
 Docker containerization ensures your applications run identically across environments:
 - Your WSL2 Ubuntu laptop
 - A cloud VM (AWS, Azure, DigitalOcean)
@@ -181,7 +181,7 @@ Docker containerization ensures your applications run identically across environ
 
 This eliminates "it works on my machine" issues — critical for professional deployments.
 
-**Why `newgrp docker`?**  
+**Why `newgrp docker`?**
 Group changes don't take effect until you log out and back in. `newgrp docker` applies the change immediately in your current terminal session.
 
 ---
@@ -384,7 +384,7 @@ source ~/.bashrc
 
 ## What's Next: Episode 4
 
-**Episode 4: Linux CLI Mastery + Bash Automation**  
+**Episode 4: Linux CLI Mastery + Bash Automation**
 → We'll dive deep into:
 - Essential Linux commands (`find`, `grep`, `awk`, `sed`)
 - Shell scripting best practices
@@ -392,7 +392,7 @@ source ~/.bashrc
 - Automation workflows for DevOps tasks
 - Integrating Bash with Python/C for hybrid solutions
 
-> 💬 **Stuck?** Join Discord: [discord.gg/rE4gXC36](https://discord.gg/rE4gXC36)  
+> 💬 **Stuck?** Join Discord: [discord.gg/rE4gXC36](https://discord.gg/rE4gXC36)
 > ⭐ **Found this helpful?** Star the repo: [github.com/S-V-J/zero2hero](https://github.com/S-V-J/zero2hero)
 
 ---
