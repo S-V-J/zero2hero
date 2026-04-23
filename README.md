@@ -70,6 +70,7 @@ Here's the **updated Phase 1 section** for your `README.md` with live video link
 | 1.3 | Development Tools: Docker + Python + Node.js + C/C++ | `docs/phase-01/03-dev-tools-setup.md` | [🟢 Watch Now](https://youtu.be/48xKbMgweq4) |
 | 1.4 | VS Code Setup for WSL: Extensions + Remote Debugging | `docs/phase-01/04-vscode-setup.md` | [🟢 Watch Now](https://youtu.be/d5PWAjU27rg) |
 | 1.5 | Git Like a Pro: Pre-commit Hooks + .gitignore | `docs/phase-01/05-precommit-gitignore.md` | [🟢 Watch Now](https://youtu.be/m_BMYqglbvQ) |
+| 1.6 | Environment Variables 101: .env + bashrc + Secrets | `docs/phase-01/06-env-vars-secrets.md` | [🟢 Watch Now](https://youtu.be/8JlwntJzSW4) |
 
 
 ### Phase 2: Core Programming & Algorithms
