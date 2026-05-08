@@ -71,6 +71,7 @@ Here's the **updated Phase 1 section** for your `README.md` with live video link
 | 1.4 | VS Code Setup for WSL: Extensions + Remote Debugging | `docs/phase-01/04-vscode-setup.md` | [🟢 Watch Now](https://youtu.be/d5PWAjU27rg) |
 | 1.5 | Git Like a Pro: Pre-commit Hooks + .gitignore | `docs/phase-01/05-precommit-gitignore.md` | [🟢 Watch Now](https://youtu.be/m_BMYqglbvQ) |
 | 1.6 | Environment Variables 101: .env + bashrc + Secrets | `docs/phase-01/06-env-vars-secrets.md` | [🟢 Watch Now](https://youtu.be/8JlwntJzSW4) |
+| 1.7 | Docker Compose: Run App + PostgreSQL + Redis in 1 Command | `docs/phase-01/07-docker-compose.md` | [🟢 Watch Now](https://youtu.be/Fiu3d6L9Nfo) |
 
 
 ### Phase 2: Core Programming & Algorithms
