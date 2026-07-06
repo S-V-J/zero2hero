@@ -74,7 +74,8 @@ Here's the **updated Phase 1 section** for your `README.md` with live video link
 | 1.7 | Docker Compose: Run App + PostgreSQL + Redis in 1 Command | `docs/phase-01/07-docker-compose.md` | [🟢 Watch Now](https://youtu.be/Fiu3d6L9Nfo) |
 | 1.8 | Write docker-compose.yml from Scratch | `docs/phase-01/08-write-docker-compose.md` | [🟢 Watch Now](https://youtu.be/X9MXNxcwy7E) |
 | 1.9 | Write app.py: Simple Python App from Scratch | `docs/phase-01/09-write-app-py.md` | [🟢 Watch Now](https://youtu.be/k39Vk6n6ZRk) |
-| 1.10 | Write Dockerfile from Scratch: Zero to Hero | `docs/phase-01/10-write-dockerfile.md` | [🟢 Watch Now](https://youtu.be/ivYMOuJhT5o) |
+| 1.10 | Dockerfile Series: Zero to Hero | `docs/phase-01/10-write-dockerfile.md` | [🟢 Watch Now](https://youtu.be/ivYMOuJhT5o) |
+| ↳ 1.10.1 | Dockerfile Fundamentals: Python/Flask Example | `docs/phase-01/10.1-write-dockerfile-from-scratch.md` | [🟢 Watch Now](https://youtu.be/1umKRGM34uY) |
 
 
 ### Phase 2: Core Programming & Algorithms
