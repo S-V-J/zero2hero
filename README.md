@@ -76,6 +76,7 @@ Here's the **updated Phase 1 section** for your `README.md` with live video link
 | 1.9 | Write app.py: Simple Python App from Scratch | `docs/phase-01/09-write-app-py.md` | [🟢 Watch Now](https://youtu.be/k39Vk6n6ZRk) |
 | 1.10 | Dockerfile Series: Zero to Hero | `docs/phase-01/10-write-dockerfile.md` | [🟢 Watch Now](https://youtu.be/ivYMOuJhT5o) |
 | ↳ 1.10.1 | Dockerfile Fundamentals: Python/Flask Example | `docs/phase-01/10.1-write-dockerfile-from-scratch.md` | [🟢 Watch Now](https://youtu.be/1umKRGM34uY) |
+| ↳ 1.10.2 | Real-world Dockerfile Builds: Multi-stage, Caching, Volumes, Networking, Health Checks | `docs/phase-01/10.2-real-world-dockerfile.md` | [🟢 Watch Now](https://youtu.be/P6CszxO_BNk) |
 
 
 ### Phase 2: Core Programming & Algorithms
